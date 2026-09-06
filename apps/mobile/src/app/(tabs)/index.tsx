@@ -1,5 +1,5 @@
-import { TYPE_LABELS } from "@/app/constants";
-import { MEDIA_TYPES } from "@/app/types";
+import { TYPE_LABELS } from "@app/constants";
+import { MEDIA_TYPES } from "@app/types";
 import { Text, View, StyleSheet } from "react-native";
 
 export default function Index() {
