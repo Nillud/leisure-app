@@ -1,9 +1,11 @@
 {
   "extends": ["expo/tsconfig.base", "../../tsconfig.base.json"],
   "compilerOptions": {
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "strict": true,
     "paths": {
-      "@*": ["./src/*"],
+      "@/*": ["./src/*"],
       "@assets/*": ["./assets/*"],
       "@app/api": ["../../packages/api/src"],
       "@app/config": ["../../packages/config/src"],
