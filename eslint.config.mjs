@@ -21,6 +21,15 @@ export default defineConfig([
   ...ts.configs.recommended,
   reactHooks.configs.flat.recommended,
   {
+    settings: {
+      "import/resolver": {
+        typescript: {
+          project: "./apps/mobile/tsconfig.json",
+        },
+      },
+    },
+  },
+  {
     files: ["**/*.{ts,tsx}"],
     rules: {
       "@typescript-eslint/consistent-type-imports": [
