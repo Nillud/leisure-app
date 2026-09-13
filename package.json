@@ -12,7 +12,8 @@
     "mobile": "pnpm --filter mobile",
     "web": "pnpm --filter web",
     "ext": "pnpm --filter ext",
-    "dev": "pnpm -r --parallel dev"
+    "dev": "pnpm -r --parallel dev",
+    "back:dev": "cd ../leisure-app-backend && pnpm start:dev"
   },
   "keywords": [],
   "author": "",
