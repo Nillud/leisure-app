@@ -1,56 +1,29 @@
-import { Download, Play, Plus } from 'lucide-react-native'
-import { StyleSheet, Text, View } from 'react-native'
+import { Play, Plus } from 'lucide-react-native'
+import { StyleSheet, View } from 'react-native'
 
-import { MEDIA_TYPES } from '@app/types'
-
-import { TYPE_LABELS } from '@app/constants'
-
-import { Button } from '@/components/Button'
+import { Button, HomeHeader, Screen } from '@/components'
 
 export default function Index() {
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>Leisure App</Text>
+		<Screen>
+			<HomeHeader />
 
-			<Button
-				icon={Play}
-				onPress={() => {}}
-			>
-				Смотреть фильм
-			</Button>
-
-			<Button
-				variant='secondary'
-				icon={Download}
-				onPress={() => {}}
-			>
-				Скачать
-			</Button>
-
-			<Button
-				icon={Plus}
-				onPress={() => {}}
-			/>
-
-			{MEDIA_TYPES.map(type => (
-				<Text
-					key={type}
-					style={styles.item}
+			<View style={{ marginTop: 60 }}>
+				<Button
+					icon={Play}
+					onPress={() => {}}
 				>
-					{TYPE_LABELS[type]}
-				</Text>
-			))}
-		</View>
+					Смотреть фильм
+				</Button>
+
+				<Button
+					variant='secondary'
+					icon={Plus}
+					onPress={() => {}}
+				/>
+			</View>
+		</Screen>
 	)
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#0B0B0F',
-		justifyContent: 'center',
-		paddingHorizontal: 24
-	},
-	title: { color: '#fff', fontSize: 20, fontWeight: '600', marginBlock: 1 },
-	item: { color: '#A1A1AA', fontSize: 16, paddingVertical: 4 }
-})
+const styles = StyleSheet.create({})

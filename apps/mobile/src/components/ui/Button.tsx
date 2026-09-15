@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		gap: space[2],
-		borderRadius: 8
+		borderRadius: 24
 	},
 	iconOnly: {
 		paddingHorizontal: 0,
