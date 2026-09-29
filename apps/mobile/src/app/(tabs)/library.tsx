@@ -1,7 +1,7 @@
 import { Link } from 'expo-router'
 import { StyleSheet } from 'react-native'
 
-import { MEDIA_TYPES } from '@app/types'
+import { TitleListItemResponseType } from '@app/api'
 
 import { TYPE_LABELS } from '@app/constants'
 
@@ -15,7 +15,7 @@ export default function Library() {
 		<Screen>
 			<ScreenTitle>Библиотека</ScreenTitle>
 
-			{MEDIA_TYPES.map(type => (
+			{Object.values(TitleListItemResponseType).map(type => (
 				<Link
 					key={type}
 					href={`/title/${type}/1`}

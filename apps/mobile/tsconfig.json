@@ -8,6 +8,7 @@
       "@/*": ["./src/*"],
       "@assets/*": ["./assets/*"],
       "@app/api": ["../../packages/api/src"],
+      "@app/api/*": ["../../packages/api/src/*"],
       "@app/config": ["../../packages/config/src"],
       "@app/constants": ["../../packages/constants/src"],
       "@app/hooks": ["../../packages/hooks/src"],

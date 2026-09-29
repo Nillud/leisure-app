@@ -2,7 +2,7 @@ import { router, useLocalSearchParams } from 'expo-router'
 import { ChevronLeft } from 'lucide-react-native'
 import { Pressable, Text, View } from 'react-native'
 
-import type { TMediaType } from '@app/types'
+import type { TitleListItemResponseType } from '@app/api'
 
 import { TYPE_LABELS } from '@app/constants'
 
@@ -10,7 +10,10 @@ import { FloatingButton } from '@/components/ui/FloatingButton'
 import { Screen } from '@/components/ui/Screen'
 
 export default function TitleDetail() {
-	const { id, type } = useLocalSearchParams<{ id: string; type: TMediaType }>()
+	const { id, type } = useLocalSearchParams<{
+		id: string
+		type: TitleListItemResponseType
+	}>()
 
 	return (
 		<Screen>
