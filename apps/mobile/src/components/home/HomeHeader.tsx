@@ -36,7 +36,7 @@ export function HomeHeader({ scrollY }: { scrollY: SharedValue<number> }) {
       </Animated.View>
 
       <View style={[styles.inner, { paddingTop: insets.top }]}>
-        <Text style={styles.logo}>RED Marathōn</Text>
+        <Text style={styles.logo}>Leisure App</Text>
 
         <Pressable hitSlop={12}>
           <Bell color={colors.text.primary} />
