@@ -18,3 +18,8 @@ export const TYPE_LABELS: Record<TitleListItemResponseType, string> = {
 	ANIME: 'Аниме',
 	TV_SHOW: 'Сериал'
 }
+
+export const ACCESS_TOKEN = 'accessToken'
+export const REFRESH_TOKEN = 'refreshToken'
+
+export * from './auth-form'

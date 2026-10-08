@@ -1,14 +1,13 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import { Play, Plus } from 'lucide-react-native'
-import { useMemo, useState } from 'react'
-import { PanResponder, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
+import { useState } from 'react'
+import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import { StyleSheet, Text, View, useWindowDimensions } from 'react-native'
 import Animated, {
   FadeIn,
   FadeOut,
-  cancelAnimation,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming
+  useAnimatedScrollHandler,
+  useSharedValue
 } from 'react-native-reanimated'
 
 import { colors, fontSize, fontWeight, space } from '@app/tokens'
@@ -25,83 +24,45 @@ interface Props {
 }
 
 export function HomeHeroSlider({ items }: Props) {
-  const { width: windowWidth } = useWindowDimensions()
-  const [width, setWidth] = useState(windowWidth)
+  const { width } = useWindowDimensions()
   const [index, setIndex] = useState(0)
 
-  const height = windowWidth * 1.35
+  const height = width * 1.4
   const current = items[index]
 
   const scrollX = useSharedValue(0)
-  const gestureStartX = useSharedValue(0)
-  const trackStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: -scrollX.get() }]
-  }))
-  const panResponder = useMemo(
-    () =>
-      PanResponder.create({
-        onMoveShouldSetPanResponderCapture: (_, gesture) =>
-          Math.abs(gesture.dx) > 10 &&
-          Math.abs(gesture.dx) > Math.abs(gesture.dy) * 1.2,
-        onPanResponderGrant: () => {
-          cancelAnimation(scrollX)
-          gestureStartX.set(scrollX.get())
-        },
-        onPanResponderMove: (_, gesture) => {
-          scrollX.set(
-            Math.max(
-              0,
-              Math.min(
-                (items.length - 1) * width,
-                gestureStartX.get() - gesture.dx
-              )
-            )
-          )
-        },
-        onPanResponderRelease: (_, gesture) => {
-          const shouldTurn =
-            Math.abs(gesture.dx) > width * 0.2 || Math.abs(gesture.vx) > 0.35
-          const nextIndex = shouldTurn
-            ? Math.max(
-                0,
-                Math.min(items.length - 1, index + (gesture.dx < 0 ? 1 : -1))
-              )
-            : index
-          setIndex(nextIndex)
-          scrollX.set(withTiming(nextIndex * width, { duration: 260 }))
-        },
-        onPanResponderTerminate: () => {
-          scrollX.set(withTiming(index * width, { duration: 260 }))
-        }
-      }),
-    [gestureStartX, index, items.length, scrollX, width]
-  )
+
+  const scrollHandler = useAnimatedScrollHandler(event => {
+    scrollX.set(event.contentOffset.x)
+  })
+
+  const onMomentumScrollEnd = (
+    event: NativeSyntheticEvent<NativeScrollEvent>
+  ) => {
+    setIndex(Math.round(event.nativeEvent.contentOffset.x / width))
+  }
 
   return (
-    <View
-      style={{ height }}
-      onLayout={event => {
-        const layoutWidth = event.nativeEvent.layout.width
-        if (layoutWidth !== width) {
-          setWidth(layoutWidth)
-          scrollX.set(index * layoutWidth)
-        }
-      }}
-      {...panResponder.panHandlers}
-    >
-      <View style={styles.slideViewport}>
-        <Animated.View style={[styles.slideTrack, trackStyle]}>
-          {items.map((item, slideIndex) => (
-            <HomeHeroSlide
-              key={item.id}
-              item={item}
-              index={slideIndex}
-              width={width}
-              scrollX={scrollX}
-            />
-          ))}
-        </Animated.View>
-      </View>
+    <View style={{ height }}>
+      <Animated.ScrollView
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        onScroll={scrollHandler}
+        onMomentumScrollEnd={onMomentumScrollEnd}
+        scrollEventThrottle={16}
+      >
+        {items.map((item, i) => (
+          <HomeHeroSlide
+            key={item.id}
+            item={item}
+            index={i}
+            width={width}
+            height={height}
+            scrollX={scrollX}
+          />
+        ))}
+      </Animated.ScrollView>
 
       <LinearGradient
         colors={[
@@ -124,6 +85,7 @@ export function HomeHeroSlider({ items }: Props) {
           entering={FadeIn.duration(400)}
           exiting={FadeOut.duration(200)}
           style={{ gap: space[2] }}
+          pointerEvents='none'
         >
           <Text
             style={styles.name}
@@ -142,7 +104,10 @@ export function HomeHeroSlider({ items }: Props) {
           </Text>
         </Animated.View>
 
-        <View style={styles.bottom}>
+        <View
+          style={styles.bottom}
+          pointerEvents='box-none'
+        >
           <View style={styles.actions}>
             <Button
               icon={Play}
@@ -175,13 +140,6 @@ export function HomeHeroSlider({ items }: Props) {
 }
 
 const styles = StyleSheet.create({
-  slideViewport: {
-    flex: 1,
-    overflow: 'hidden'
-  },
-  slideTrack: {
-    flexDirection: 'row'
-  },
   content: {
     position: 'absolute',
     left: 0,
@@ -220,11 +178,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: space[2]
-  },
-  dot: {
-    backgroundColor: colors.text.muted
-  },
-  dotActive: {
-    backgroundColor: colors.text.primary
   }
 })
