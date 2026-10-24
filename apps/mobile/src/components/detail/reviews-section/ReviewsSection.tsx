@@ -20,7 +20,7 @@ export function ReviewsSection({ titleKey }: Props) {
   return (
     <View style={styles.root}>
       <View style={styles.header}>
-        <Text style={styles.title}>Reviews</Text>
+        <Text style={styles.title}>Отзывы</Text>
         <Text style={styles.count}>{reviews.total}</Text>
       </View>
 

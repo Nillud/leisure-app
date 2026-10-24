@@ -41,10 +41,10 @@ export default function Onboarding() {
           />
         </View>
 
-        <Text style={styles.title}>Track Everything You Love</Text>
+        <Text style={styles.title}>Всё, что вы любите, в одном месте</Text>
         <Text style={styles.description}>
-          Movies, series, anime, books and games in one place. Rate what you
-          finish and discover your Taste DNA.
+          Фильмы, сериалы, аниме, книги и игры в одном месте. Ставьте оценки
+          и узнавайте больше о своих вкусах.
         </Text>
 
         <View style={styles.actions}>
@@ -52,7 +52,7 @@ export default function Onboarding() {
             size='lg'
             onPress={() => onGetStarted('register')}
           >
-            Get started
+            Начать
           </Button>
 
           <Button
@@ -60,7 +60,7 @@ export default function Onboarding() {
             variant='secondary'
             onPress={completeOnboarding}
           >
-            Explore first
+            Сначала осмотреться
           </Button>
         </View>
 
@@ -69,8 +69,8 @@ export default function Onboarding() {
           onPress={() => onGetStarted('login')}
         >
           <Text style={styles.login}>
-            Already have an account?{' '}
-            <Text style={styles.loginAccent}>Log in</Text>
+            Уже есть аккаунт?{' '}
+            <Text style={styles.loginAccent}>Войти</Text>
           </Text>
         </Pressable>
       </SafeAreaView>

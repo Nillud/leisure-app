@@ -27,7 +27,7 @@ export function SheetFooter({
             variant='secondary'
             onPress={onCancel}
           >
-            Cancel
+            Отмена
           </Button>
         </View>
 

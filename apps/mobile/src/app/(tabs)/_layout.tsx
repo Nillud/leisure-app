@@ -19,7 +19,7 @@ export default function TabsLayout() {
           sf={{ default: 'house', selected: 'house.fill' }}
           md='home'
         />
-        <NativeTabs.Trigger.Label>For You</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>Для вас</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name='library'>
@@ -27,7 +27,7 @@ export default function TabsLayout() {
           sf={{ default: 'heart', selected: 'heart.fill' }}
           md='favorite'
         />
-        <NativeTabs.Trigger.Label>My Watchlist</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>Библиотека</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name='profile'>
@@ -35,14 +35,14 @@ export default function TabsLayout() {
           sf={{ default: 'person.circle', selected: 'person.circle.fill' }}
           md='account_circle'
         />
-        <NativeTabs.Trigger.Label>Account</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>Профиль</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger
         name='search'
         role='search'
       >
-        <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>Поиск</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
     </NativeTabs>
   )

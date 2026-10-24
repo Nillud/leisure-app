@@ -61,7 +61,7 @@ export default function Profile() {
 
         <ProfileMenuItem
           icon={LogOut}
-          label={isPending ? 'Logging out...' : 'Logout'}
+          label={isPending ? 'Выходим…' : 'Выйти'}
           onPress={handleLogout}
           isLast
           isHideArrow

@@ -27,7 +27,7 @@ export default function Plans() {
   return (
     <View style={styles.root}>
       <View style={[styles.content, { paddingTop: top + space[16] }]}>
-        <Text style={styles.title}>Choose your plan</Text>
+        <Text style={styles.title}>Выберите тариф</Text>
 
         <ScrollView
           horizontal

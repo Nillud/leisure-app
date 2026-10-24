@@ -1,18 +1,18 @@
 export const AUTH_FORM_CONTENT = {
   login: {
-    title: 'Welcome back!',
-    submit: 'Log in',
-    pending: 'Logging in...',
-    footerText: "Don't have an account?",
-    footerAction: 'Sign up',
+    title: 'С возвращением!',
+    submit: 'Войти',
+    pending: 'Входим…',
+    footerText: 'Нет аккаунта?',
+    footerAction: 'Зарегистрироваться',
     footerHref: '/register'
   },
   register: {
-    title: 'Create account',
-    submit: 'Create account',
-    pending: 'Creating...',
-    footerText: 'Already have an account?',
-    footerAction: 'Log in',
+    title: 'Создать аккаунт',
+    submit: 'Создать аккаунт',
+    pending: 'Создаём…',
+    footerText: 'Уже есть аккаунт?',
+    footerAction: 'Войти',
     footerHref: '/login'
   }
 } as const

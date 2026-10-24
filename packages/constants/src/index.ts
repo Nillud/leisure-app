@@ -4,19 +4,19 @@ import type {
 } from '../../api/src/generated/models'
 
 export const STATUS_LABELS: Record<LibraryEntryResponseStatus, string> = {
-  PLANNED: 'Planned',
-  IN_PROGRESS: 'In Progress',
-  COMPLETED: 'Completed',
-  ON_HOLD: 'On Hold',
-  DROPPED: 'Dropped'
+  PLANNED: 'В планах',
+  IN_PROGRESS: 'В процессе',
+  COMPLETED: 'Завершено',
+  ON_HOLD: 'На паузе',
+  DROPPED: 'Брошено'
 }
 
 export const TYPE_LABELS: Record<TitleListItemResponseType, string> = {
-  MOVIE: 'Movie',
-  TV_SHOW: 'Series',
-  GAME: 'Game',
-  BOOK: 'Book',
-  ANIME: 'Anime'
+  MOVIE: 'Фильм',
+  TV_SHOW: 'Сериал',
+  GAME: 'Игра',
+  BOOK: 'Книга',
+  ANIME: 'Аниме'
 }
 
 export const ACCESS_TOKEN = 'accessToken'

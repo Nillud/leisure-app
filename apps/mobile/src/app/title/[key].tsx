@@ -63,7 +63,7 @@ export default function TitleDetail() {
           <TitleActions titleKey={title.key} />
 
           {!!title.similar.length && (
-            <SectionCarousel title='You may also like'>
+            <SectionCarousel title='Вам также может понравиться'>
               {title.similar.map(item => (
                 <TitleCard
                   key={item.key}

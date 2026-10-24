@@ -44,14 +44,14 @@ export default function ReviewSheet() {
     saveReview(values, router.back, errorMessage => {
       setError('root', {
         message:
-          errorMessage ?? 'Could not save your review. Please try again later.'
+          errorMessage ?? 'Не удалось сохранить отзыв. Попробуйте позже.'
       })
     })
   })
 
   return (
     <View style={styles.root}>
-      <ScreenTitle>How was it?</ScreenTitle>
+      <ScreenTitle>Как вам?</ScreenTitle>
 
       {!!titleName && <Text style={styles.subtitle}>{titleName}</Text>}
 
@@ -72,7 +72,7 @@ export default function ReviewSheet() {
         render={({ field, fieldState }) => (
           <Input
             multiline
-            placeholder='Share your thoughts (optional)'
+            placeholder='Поделитесь впечатлениями (необязательно)'
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
@@ -84,7 +84,7 @@ export default function ReviewSheet() {
       {!!errors.root && <Text style={styles.error}>{errors.root.message}</Text>}
 
       <SheetFooter
-        submitLabel={review ? 'Save' : 'Send'}
+        submitLabel={review ? 'Сохранить' : 'Отправить'}
         isSubmitDisabled={!isValid || isSaving}
         onCancel={router.back}
         onSubmit={onSubmit}

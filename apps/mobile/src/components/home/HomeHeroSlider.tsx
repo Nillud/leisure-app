@@ -87,7 +87,7 @@ export function HomeHeroSlider({ items }: Props) {
           <TitleInfo
             name={current?.name || ''}
             meta={current?.genres?.slice(0, 3).join(' · ')}
-            description='When an overachieving college senior makes a wrong turn...'
+            description='Когда успешный студент выпускного курса сворачивает не туда…'
           />
         </Animated.View>
 
@@ -102,7 +102,7 @@ export function HomeHeroSlider({ items }: Props) {
                 router.push(`/title/${current?.key}`)
               }}
             >
-              Watch Movie
+              Смотреть
             </Button>
 
             <Button

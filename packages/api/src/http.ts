@@ -43,7 +43,7 @@ const request = async (url: string, init?: RequestInit) => {
 
 export const http = async <T>(url: string, init?: RequestInit): Promise<T> => {
   if (!baseUrl) {
-    throw new Error('API is not configured. Please call configureApi() first.')
+    throw new Error('Адрес API не настроен. Укажите EXPO_PUBLIC_API_URL и перезапустите приложение.')
   }
 
   let response = await request(url, init)

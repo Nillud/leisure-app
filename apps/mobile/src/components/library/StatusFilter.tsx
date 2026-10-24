@@ -61,7 +61,7 @@ export function StatusFilter({ value, onChange }: Props) {
               color={contentColor}
             />
             <Text style={[styles.label, { color: contentColor }]}>
-              {status ? STATUS_LABELS[status] : 'All'}
+              {status ? STATUS_LABELS[status] : 'Все'}
             </Text>
           </Pressable>
         )

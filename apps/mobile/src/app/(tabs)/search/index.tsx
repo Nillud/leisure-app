@@ -4,14 +4,14 @@ import { ScrollView, Text } from 'react-native'
 export default function Search() {
   return (
     <>
-      <Stack.Title>Search</Stack.Title>
+      <Stack.Title>Поиск</Stack.Title>
       <Stack.SearchBar
         placement='automatic'
-        placeholder='Search'
+        placeholder='Поиск'
         onChangeText={() => {}}
       />
       <ScrollView>
-        <Text>Items</Text>
+        <Text>Результаты</Text>
       </ScrollView>
     </>
   )

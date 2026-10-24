@@ -16,7 +16,7 @@ export default function Settings() {
         icon={ChevronLeft}
         iconOffset={-2}
       />
-      <Text>Settings</Text>
+      <Text>Настройки</Text>
     </Screen>
   )
 }

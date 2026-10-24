@@ -56,7 +56,7 @@ export function PlanCard({ plan, width, onPress }: Props) {
         size='lg'
         onPress={onPress}
       >
-        Get started
+        Начать
       </Button>
     </View>
   )

@@ -17,18 +17,18 @@ export function TitleActions({ titleKey }: { titleKey: string }) {
     <View style={styles.actions}>
       <ActionButton
         icon={Bookmark}
-        label='Watchlist'
+        label='Библиотека'
         onPress={() => {}}
       />
       <ActionButton
         icon={Star}
-        label={rating ? `${rating} / ${REVIEW_RATING.max}` : 'Rate'}
+        label={rating ? `${rating} / ${REVIEW_RATING.max}` : 'Оценить'}
         onPress={() => pushProtected(`/review/${titleKey}`)}
         isActive={!!rating}
       />
       <ActionButton
         icon={Share}
-        label='Share'
+        label='Поделиться'
         onPress={() => pushProtected(`/share/${titleKey}`)}
       />
     </View>

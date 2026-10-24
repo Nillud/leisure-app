@@ -4,23 +4,23 @@ import { Bell, CreditCard, Heart, Users } from 'lucide-react-native'
 export const PROFILE_MENU = [
   {
     icon: CreditCard,
-    label: 'Subscription',
-    value: 'Free',
+    label: 'Подписка',
+    value: 'Бесплатная',
     onPress: () => router.push('/plans')
   },
   {
     icon: Heart,
-    label: 'Watchlist',
+    label: 'Библиотека',
     onPress: () => router.push('/(tabs)/library')
   },
   {
     icon: Users,
-    label: 'Friends',
+    label: 'Друзья',
     onPress: () => {}
   },
   {
     icon: Bell,
-    label: 'Notifications',
+    label: 'Уведомления',
     onPress: () => {}
   }
 ]

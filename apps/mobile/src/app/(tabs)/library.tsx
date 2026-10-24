@@ -37,7 +37,7 @@ export default function Library() {
   return (
     <Screen>
       <View style={styles.header}>
-        <ScreenTitle>Library</ScreenTitle>
+        <ScreenTitle>Библиотека</ScreenTitle>
       </View>
 
       <StatusFilter
@@ -62,7 +62,7 @@ export default function Library() {
         columnWrapperStyle={styles.row}
         contentContainerStyle={styles.list}
         ListEmptyComponent={
-          isPending ? null : <Text style={styles.empty}>Nothing here yet</Text>
+          isPending ? null : <Text style={styles.empty}>Здесь пока пусто</Text>
         }
       />
     </Screen>

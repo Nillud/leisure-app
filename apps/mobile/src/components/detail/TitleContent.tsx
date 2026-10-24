@@ -42,7 +42,7 @@ export function TitleContent({ title }: Props) {
 
       {!!title.cast.length && (
         <CreditLine
-          label='Cast'
+          label='В ролях'
           names={joinNames(title.cast)}
         />
       )}

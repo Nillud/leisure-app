@@ -16,7 +16,7 @@ export default function Subscription() {
         icon={ChevronLeft}
         iconOffset={-2}
       />
-      <Text>Subscription</Text>
+      <Text>Подписка</Text>
     </Screen>
   )
 }

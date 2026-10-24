@@ -38,7 +38,7 @@ export default function ShareSheet() {
   return (
     <View style={styles.root}>
       <View style={styles.inset}>
-        <ScreenTitle>Share with friends</ScreenTitle>
+        <ScreenTitle>Поделиться с друзьями</ScreenTitle>
         <View style={styles.divider} />
       </View>
 
@@ -55,15 +55,15 @@ export default function ShareSheet() {
       </SectionCarousel>
 
       <View style={[styles.inset, styles.form]}>
-        <Text style={styles.to}>To: {recipients || 'Choose friends'}</Text>
+        <Text style={styles.to}>Кому: {recipients || 'Выберите друзей'}</Text>
 
         <Input
-          placeholder='Check this out!'
+          placeholder='Посмотрите на это!'
           multiline
         />
 
         <SheetFooter
-          submitLabel='Send'
+          submitLabel='Отправить'
           onSubmit={() => router.back()}
           onCancel={() => router.back()}
         />

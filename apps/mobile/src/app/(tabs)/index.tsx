@@ -37,7 +37,7 @@ export default function Index() {
         {!!heroItems.length && <HomeHeroSlider items={heroItems} />}
 
         <SectionCarousel
-          title='Top picks for you'
+          title='Подборка для вас'
           onPressArrow={() => {}}
         >
           {topPicksForYouItems.map(title => (
@@ -50,7 +50,7 @@ export default function Index() {
         </SectionCarousel>
 
         <SectionCarousel
-          title='Popular now'
+          title='Сейчас популярно'
           onPressArrow={() => {}}
         >
           {trendingItems.map(title => (

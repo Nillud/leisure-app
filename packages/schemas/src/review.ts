@@ -4,7 +4,7 @@ import { REVIEW_RATING, REVIEW_TEXT } from '@app/constants'
 
 export const reviewSchema = z.object({
   rating: z
-    .number({ message: 'Rate the title' })
+    .number({ message: 'Поставьте оценку' })
     .int()
     .min(REVIEW_RATING.min)
     .max(REVIEW_RATING.max),
@@ -12,10 +12,10 @@ export const reviewSchema = z.object({
     .string()
     .trim()
     .max(REVIEW_TEXT.max, {
-      message: `Up to ${REVIEW_TEXT.max} characters`
+      message: `Не более ${REVIEW_TEXT.max} символов`
     })
     .refine(text => !text || text.length >= REVIEW_TEXT.min, {
-      message: `At least ${REVIEW_TEXT.min} characters or leave it empty`
+      message: `Не менее ${REVIEW_TEXT.min} символов или оставьте поле пустым`
     })
 })
 

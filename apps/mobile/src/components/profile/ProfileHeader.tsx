@@ -29,7 +29,7 @@ export function ProfileHeader({ name, avatarUrl }: Props) {
         onPress={() => router.push('/settings')}
         hitSlop={10}
       >
-        <Text style={styles.edit}>Edit</Text>
+        <Text style={styles.edit}>Изменить</Text>
       </Pressable>
 
       <Text style={styles.name}>{name}</Text>

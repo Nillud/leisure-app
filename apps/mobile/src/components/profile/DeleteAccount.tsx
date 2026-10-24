@@ -23,11 +23,11 @@ export function DeleteAccount() {
 
   const onDeleteAccount = () => {
     Alert.alert(
-      'Delete Account',
-      'Your library, reviews and collections will be deleted. This action cannot be undone.',
+      'Удаление аккаунта',
+      'Ваша библиотека, отзывы и коллекции будут удалены. Это действие нельзя отменить.',
       [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Delete', style: 'destructive', onPress: () => mutate() }
+        { text: 'Отмена', style: 'cancel' },
+        { text: 'Удалить', style: 'destructive', onPress: () => mutate() }
       ]
     )
   }
@@ -42,7 +42,7 @@ export function DeleteAccount() {
       }}
     >
       <Text style={{ color: 'white', opacity: 0.2, fontSize: fontSize.sm }}>
-        {isPending ? 'Deleting...' : 'Delete account'}
+        {isPending ? 'Удаляем…' : 'Удалить аккаунт'}
       </Text>
     </Pressable>
   )

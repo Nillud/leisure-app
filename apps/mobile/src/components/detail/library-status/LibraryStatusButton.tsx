@@ -30,7 +30,7 @@ export function LibraryStatusButton({ titleKey }: Props) {
         icon={Star}
         onPress={openReview}
       >
-        {rating ? `Rated ${rating}/${REVIEW_RATING.max}` : 'Rate'}
+        {rating ? `Оценка ${rating}/${REVIEW_RATING.max}` : 'Оценить'}
       </Button>
     )
   }

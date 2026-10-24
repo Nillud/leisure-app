@@ -10,8 +10,6 @@ import { colors, fontSize, fontWeight, space } from '@app/tokens'
 
 import { type TAuthForm, authSchema } from '@app/schemas'
 
-import { ApiError } from '@app/api'
-
 import { Button } from '../ui/Button'
 import { FloatingButton } from '../ui/FloatingButton'
 import { Input } from '../ui/Input'
@@ -26,6 +24,7 @@ interface Props {
 
 export function AuthForm({ error, isPending, onSubmit, type }: Props) {
   const content = AUTH_FORM_CONTENT[type]
+  const errorMessage = error instanceof Error ? error.message : null
 
   const { control, handleSubmit } = useForm<TAuthForm>({
     resolver: zodResolver(authSchema)
@@ -55,7 +54,7 @@ export function AuthForm({ error, isPending, onSubmit, type }: Props) {
               name='email'
               render={({ field, fieldState }) => (
                 <Input
-                  placeholder='Email'
+                  placeholder='Электронная почта'
                   autoCapitalize='none'
                   keyboardType='email-address'
                   value={field.value}
@@ -70,7 +69,7 @@ export function AuthForm({ error, isPending, onSubmit, type }: Props) {
               name='password'
               render={({ field, fieldState }) => (
                 <Input
-                  placeholder='Password'
+                  placeholder='Пароль'
                   isPassword
                   value={field.value}
                   onChangeText={field.onChange}
@@ -79,9 +78,7 @@ export function AuthForm({ error, isPending, onSubmit, type }: Props) {
               )}
             />
 
-            {error instanceof ApiError && (
-              <Text style={styles.error}>{error.messages[0]}</Text>
-            )}
+            {!!errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
 
             <Button
               size='lg'

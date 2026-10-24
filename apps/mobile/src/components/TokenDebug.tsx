@@ -22,31 +22,31 @@ export function TokenDebug({ refetch }: { refetch?: () => void }) {
 
   return (
     <View style={styles.root}>
-      <Text style={styles.label}>access</Text>
+      <Text style={styles.label}>Токен доступа</Text>
       <Text style={styles.value}>{access ?? '—'}</Text>
 
-      <Text style={styles.label}>refresh</Text>
+      <Text style={styles.label}>Токен обновления</Text>
       <Text style={styles.value}>{refresh ?? '—'}</Text>
 
       <Button
         variant='secondary'
         onPress={read}
       >
-        Read tokens
+        Прочитать токены
       </Button>
 
       <Button
         variant='secondary'
         onPress={breakToken}
       >
-        Break access token
+        Повредить токен доступа
       </Button>
 
       <Button
         variant='secondary'
         onPress={() => refetch?.()}
       >
-        Send request
+        Отправить запрос
       </Button>
     </View>
   )
