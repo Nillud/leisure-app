@@ -1,5 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query'
-import { router } from 'expo-router'
+import { type Href, router, useLocalSearchParams } from 'expo-router'
 
 import { useAuthMobileLogin } from '@app/api'
 
@@ -9,12 +9,24 @@ import { saveTokens } from '@/lib/token'
 
 export default function Login() {
   const queryClient = useQueryClient()
+  const { redirect } = useLocalSearchParams<{
+    redirect?: Extract<Href, string>
+  }>()
 
   const { mutate, isPending, error } = useAuthMobileLogin({
     mutation: {
       onSuccess: async ({ data: { accessToken, refreshToken } }) => {
         await saveTokens(accessToken, refreshToken)
+
         queryClient.clear()
+        await queryClient.resetQueries()
+
+        if (redirect) {
+          router.back()
+          router.push(redirect)
+          return
+        }
+
         router.replace('/')
       }
     }

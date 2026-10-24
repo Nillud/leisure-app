@@ -7,9 +7,9 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "ts-check": "pnpm -r exec tsc --noEmit",
+    "ts-check": "tsc --noEmit && tsc --noEmit -p apps/mobile/tsconfig.json",
     "format": "prettier --write .",
-    "mobile": "pnpm --filter mobile",
+    "mob": "pnpm --filter mobile",
     "web": "pnpm --filter web",
     "ext": "pnpm --filter ext",
     "dev": "pnpm -r --parallel dev",
@@ -18,21 +18,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "11.25.0",
-      "onFail": "download"
-    }
-  },
   "packageManager": "pnpm@11.25.0",
-  "type": "module",
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "eslint": "^9.39.5",
     "eslint-config-expo": "^57.0.2",
-    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-native": "^5.0.0",
     "prettier": "^3.9.6",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.69.0"

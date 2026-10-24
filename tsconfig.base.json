@@ -4,9 +4,6 @@
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
-		"paths": {
-			"@app/*": ["./packages/*/src"]
-		},
 		"verbatimModuleSyntax": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,

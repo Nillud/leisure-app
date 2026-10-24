@@ -1,8 +1,9 @@
 import { LinearGradient } from 'expo-linear-gradient'
+import { router } from 'expo-router'
 import { Play, Plus } from 'lucide-react-native'
 import { useState } from 'react'
 import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
-import { StyleSheet, Text, View, useWindowDimensions } from 'react-native'
+import { StyleSheet, View, useWindowDimensions } from 'react-native'
 import Animated, {
   FadeIn,
   FadeOut,
@@ -10,17 +11,18 @@ import Animated, {
   useSharedValue
 } from 'react-native-reanimated'
 
-import { colors, fontSize, fontWeight, space } from '@app/tokens'
+import { space } from '@app/tokens'
 
-import type { TitleListItemResponse } from '@app/api'
+import type { DiscoverItemResponse } from '@app/api'
 
+import { HERO_GRADIENT, TitleInfo } from '../elements'
 import { Button } from '../ui/Button'
 
 import { HomeHeroSlide } from './HomeHeroSlide'
 import { PaginationDot } from './PaginationDot'
 
 interface Props {
-  items: TitleListItemResponse[]
+  items: DiscoverItemResponse[]
 }
 
 export function HomeHeroSlider({ items }: Props) {
@@ -54,7 +56,7 @@ export function HomeHeroSlider({ items }: Props) {
       >
         {items.map((item, i) => (
           <HomeHeroSlide
-            key={item.id}
+            key={item.key}
             item={item}
             index={i}
             width={width}
@@ -65,13 +67,8 @@ export function HomeHeroSlider({ items }: Props) {
       </Animated.ScrollView>
 
       <LinearGradient
-        colors={[
-          'rgba(2,0,3,0.7)',
-          'transparent',
-          'rgba(2,0,3,0.9)',
-          colors.bg.base
-        ]}
-        locations={[0, 0.35, 0.75, 1]}
+        colors={HERO_GRADIENT.colors}
+        locations={HERO_GRADIENT.locations}
         style={StyleSheet.absoluteFill}
         pointerEvents='none'
       />
@@ -81,27 +78,17 @@ export function HomeHeroSlider({ items }: Props) {
         pointerEvents='box-none'
       >
         <Animated.View
-          key={current?.id}
+          key={current?.key}
           entering={FadeIn.duration(400)}
           exiting={FadeOut.duration(200)}
           style={{ gap: space[2] }}
           pointerEvents='none'
         >
-          <Text
-            style={styles.name}
-            numberOfLines={2}
-          >
-            {current?.name}
-          </Text>
-
-          <Text style={styles.genres}>Thrillers · Dramas · Action · Chime</Text>
-
-          <Text
-            style={styles.description}
-            numberOfLines={2}
-          >
-            When an overachieving college senior makes a wrong turn...
-          </Text>
+          <TitleInfo
+            name={current?.name || ''}
+            meta={current?.genres?.slice(0, 3).join(' · ')}
+            description='When an overachieving college senior makes a wrong turn...'
+          />
         </Animated.View>
 
         <View
@@ -111,7 +98,9 @@ export function HomeHeroSlider({ items }: Props) {
           <View style={styles.actions}>
             <Button
               icon={Play}
-              onPress={() => {}}
+              onPress={() => {
+                router.push(`/title/${current?.key}`)
+              }}
             >
               Watch Movie
             </Button>
@@ -126,7 +115,7 @@ export function HomeHeroSlider({ items }: Props) {
           <View style={styles.dots}>
             {items.map((item, index) => (
               <PaginationDot
-                key={item.id}
+                key={item.key}
                 index={index}
                 width={width}
                 scrollX={scrollX}
@@ -148,20 +137,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: space['layout-horizontal'],
     paddingBottom: space[4],
     gap: space[2]
-  },
-  genres: {
-    color: colors.text.primary,
-    fontSize: fontSize.sm
-  },
-  name: {
-    color: colors.text.primary,
-    fontSize: fontSize['3xl'],
-    fontWeight: fontWeight.bold
-  },
-  description: {
-    color: colors.text['little-muted'],
-    fontSize: fontSize.sm,
-    lineHeight: 20
   },
   bottom: {
     flexDirection: 'row',

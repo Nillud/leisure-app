@@ -4,29 +4,29 @@ import { StyleSheet, Text, View } from 'react-native'
 import { colors, fontSize, fontWeight, space } from '@app/tokens'
 
 interface Props {
-	children: string
-	action?: ReactNode
+  children: string
+  action?: ReactNode
 }
 
 export function ScreenTitle({ children, action }: Props) {
-	return (
-		<View style={styles.root}>
-			<Text style={styles.title}>{children}</Text>
-			{action}
-		</View>
-	)
+  return (
+    <View style={styles.root}>
+      <Text style={styles.title}>{children}</Text>
+      {action}
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
-	root: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		paddingBottom: space[4]
-	},
-	title: {
-		color: colors.text.primary,
-		fontSize: fontSize['2xl'],
-		fontWeight: fontWeight.bold
-	}
+  root: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: space[4]
+  },
+  title: {
+    color: colors.text.primary,
+    fontSize: fontSize['2xl'],
+    fontWeight: fontWeight.bold
+  }
 })

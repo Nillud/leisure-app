@@ -1,9 +1,16 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - 'apps/*'
+  - 'packages/*'
 
 allowBuilds:
-  esbuild: true
-  unrs-resolver: true
+  esbuild: false
+  unrs-resolver: false
 
 linkWorkspacePackages: true
+
+minimumReleaseAgeExclude:
+  - expo-constants@57.0.20
+  - expo-modules-core@57.0.20
+  - expo@57.0.26
+  - '@expo/ui@57.0.21 || 57.0.22'
+  - expo-router@57.0.24

@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { router, type Href } from 'expo-router'
+import { type Href, router, useLocalSearchParams } from 'expo-router'
+import { ChevronLeft } from 'lucide-react-native'
 import { Controller, useForm } from 'react-hook-form'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
@@ -12,6 +13,7 @@ import { type TAuthForm, authSchema } from '@app/schemas'
 import { ApiError } from '@app/api'
 
 import { Button } from '../ui/Button'
+import { FloatingButton } from '../ui/FloatingButton'
 import { Input } from '../ui/Input'
 import { Screen } from '../ui/Screen'
 
@@ -29,8 +31,20 @@ export function AuthForm({ error, isPending, onSubmit, type }: Props) {
     resolver: zodResolver(authSchema)
   })
 
+  const { redirect } = useLocalSearchParams<{
+    redirect?: Extract<Href, string>
+  }>()
+
   return (
     <Screen>
+      <FloatingButton
+        onPress={() => {
+          router.push('/')
+        }}
+        side='left'
+        icon={ChevronLeft}
+        iconOffset={-2}
+      />
       <View style={styles.root}>
         <View style={styles.center}>
           <Text style={styles.title}>{content.title}</Text>
@@ -79,7 +93,14 @@ export function AuthForm({ error, isPending, onSubmit, type }: Props) {
           </View>
         </View>
 
-        <Pressable onPress={() => router.replace(content.footerHref as Href)}>
+        <Pressable
+          onPress={() =>
+            router.replace({
+              pathname: content.footerHref,
+              params: { redirect }
+            })
+          }
+        >
           <Text style={styles.link}>
             {content.footerText}{' '}
             <Text style={styles.linkAccent}>{content.footerAction}</Text>
